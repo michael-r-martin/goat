@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct FeedPostAPIResponse: Codable {
+struct ImagePostAPIResponse: Codable {
     var id: String?
     var userImageUrl: String?
     var contentImageUrl: String?
@@ -17,7 +17,7 @@ struct FeedPostAPIResponse: Codable {
     var timestamp: Double?
 }
 
-struct FeedPost {
+struct ImagePost {
     var id: String
     var userImage: UIImage
     var contentImage: UIImage

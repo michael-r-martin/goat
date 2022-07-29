@@ -10,23 +10,19 @@ import UIKit
 class MainFeedCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlets
-    @IBOutlet weak var cellBackgroundView: UIView!
-    @IBOutlet weak var mainContentView: UIView!
-    @IBOutlet weak var userImageBackgroundView: UIView!
+    @IBOutlet weak private var cellBackgroundView: UIView!
+    @IBOutlet weak private var mainContentView: UIView!
+    @IBOutlet weak private var userImageBackgroundView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
-    @IBOutlet weak var optionsButton: UIButton!
+    @IBOutlet weak private var optionsButton: UIButton!
     @IBOutlet weak var contentImageView: UIImageView!
     @IBOutlet weak var contentDescriptionLabel: UITextView!
-    @IBOutlet weak var messageButtonView: UIView!
-    @IBOutlet weak var messageButton: UIButton!
-    @IBOutlet weak var reactButtonView: UIView!
-    @IBOutlet weak var reactButton: UIButton!
-    
-    required init?(coder: NSCoder) {
-        styleCell()
-    }
+    @IBOutlet weak private var messageButtonView: UIView!
+    @IBOutlet weak private var messageButton: UIButton!
+    @IBOutlet weak private var reactButtonView: UIView!
+    @IBOutlet weak private var reactButton: UIButton!
     
     func styleCell() {
         cellBackgroundView.applyCurvedCorners(0.05)
