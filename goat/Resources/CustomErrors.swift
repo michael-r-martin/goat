@@ -30,12 +30,15 @@ enum DownloadValidationError: LocalizedError {
 enum ParsingError: LocalizedError {
     case serializationError
     case decodingError
+    case mappingError
     
     var errorDescription: String? {
         switch self {
         case .serializationError:
             return "We took an L processing the data 😭"
         case .decodingError:
+            return "We took an L processing the data 😭"
+        case .mappingError:
             return "We took an L processing the data 😭"
         }
     }

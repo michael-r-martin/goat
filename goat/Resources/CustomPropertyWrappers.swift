@@ -36,6 +36,28 @@ import UIKit
     }
 }
 
+@propertyWrapper struct NonOptionalString {
+    var wrappedValue: String?
+    var defaultValue: String
+    
+    init(defaultValue: String) {
+        self.defaultValue = defaultValue
+    }
+    
+    var projectedValue: String {
+        get {
+            if let wrappedValue = wrappedValue {
+                return wrappedValue
+            } else {
+                return defaultValue
+            }
+        }
+        set {
+            wrappedValue = newValue
+        }
+    }
+}
+
 //@propertyWrapper struct CornerRadius {
 //    var wrappedValue: UIView
 //    var percentage: CGFloat

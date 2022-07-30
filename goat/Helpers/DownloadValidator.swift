@@ -13,19 +13,13 @@ struct DownloadValidator {
     var snapshotDocuments: QuerySnapshot?
     var error: Error?
     
-    var validDataDictionary: [String: Any]
-    var validData: Data
-    
-    var validDataDictionaryArray: [[String: Any]]
-    var validDataArray: [Data]
-    
     init(snapshot: DocumentSnapshot?, snapshotDocuments: QuerySnapshot?, error: Error?) {
         self.snapshot = snapshot
         self.snapshotDocuments = snapshotDocuments
         self.error = error
     }
  
-    mutating func validateDocument() throws {
+    mutating func validateDocument() throws -> [String: Any] {
         guard error == nil else {
             throw DownloadValidationError.apiError
         }
@@ -38,20 +32,20 @@ struct DownloadValidator {
             throw DownloadValidationError.noDocument
         }
         
-        self.validDataDictionary = data
+        return data
     }
     
-    mutating func serializeDocumentIntoData() throws {
+    mutating func serializeDocumentIntoData(validDataDictionary: [String: Any]) throws -> Data {
         do {
             let serializedData = try JSONSerialization.data(withJSONObject: validDataDictionary, options: [])
             
-            self.validData = serializedData
+            return serializedData
         } catch {
             throw ParsingError.serializationError
         }
     }
     
-    mutating func validateCollection() throws {
+    mutating func validateCollection() throws -> [[String: Any]] {
         var validData: [[String: Any]] = [[:]]
         
         guard error == nil else {
@@ -59,7 +53,7 @@ struct DownloadValidator {
         }
         
         guard let snapshotDocuments = snapshotDocuments else {
-            return
+            throw DownloadValidationError.noData
         }
         
         let documents = snapshotDocuments.documents
@@ -69,18 +63,22 @@ struct DownloadValidator {
             validData.append(data)
         }
         
-        self.validDataDictionaryArray = validData
+        return validData
     }
     
-    mutating func serializeCollectionIntoDataArray() throws {
+    mutating func serializeCollectionIntoDataArray(validDataDictionaryArray: [[String: Any]]) throws -> [Data] {
+        var validDataArray: [Data] = []
+        
         for item in validDataDictionaryArray {
             do {
                 let serializedData = try JSONSerialization.data(withJSONObject: item, options: [])
                 
-                self.validDataArray.append(serializedData)
+                validDataArray.append(serializedData)
             } catch {
                 throw ParsingError.serializationError
             }
         }
+        
+        return validDataArray
     }
 }

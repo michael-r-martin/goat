@@ -13,7 +13,7 @@ class MainFeedViewController: UIViewController {
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
     // MARK: - Classes
-    let contentDownloader = ContentDownloader()
+    let imagePostDownloader = ImagePostDownloader()
     
     // MARK: - Env. Variables
     var rawCurrentPost: ImagePostAPIResponse?
@@ -64,23 +64,12 @@ extension MainFeedViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
-extension MainFeedViewController: ContentDownloadDelegate {
-    func didAttemptContentDownload(downloadStatus: DownloadStatus, contentType: ContentType, error: String?) {
-        switch downloadStatus {
-        case .rawContentFetched(let any):
-            self.rawCurrentPost = any as? ImagePostAPIResponse
-        case .rawCollectionFetched(let any):
-            <#code#>
-        case .imageFetched(let any):
-            <#code#>
-        case .allImagesFetched(let any):
-            <#code#>
-        }
+extension MainFeedViewController: ImagePostDownloadDelegate {
+    func didAttemptCollectionDownload(collection: [ImagePostAPIResponse], error: String?) {
+        
     }
     
-    func didAttemptContentCollectionDownload(downloadStatus: DownloadStatus, contentType: ContentType, error: String?) {
-        <#code#>
+    func didAttemptFullPostDownload(fullPost: ImagePost, error: String?) {
+        
     }
-    
-    
 }
