@@ -23,7 +23,7 @@ struct AnyParsedObject<T: Codable>: Parseable {
             let parsedObject = try decoder.decode(T.self, from: objectData)
             return parsedObject
         } catch {
-            throw error
+            throw ParsingError.decodingError
         }
     }
 }

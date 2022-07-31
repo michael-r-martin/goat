@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct PublicUserAPIResponse: Codable {
+struct UserAPIResponse: Codable {
     var id: String?
     var profileImageUrl: String?
     var bio: String?
@@ -17,31 +17,11 @@ struct PublicUserAPIResponse: Codable {
     var userNumber: Int?
 }
 
-struct PublicUser {
-    var id: String?
+struct User {
+    var id: String
     var profileImage: UIImage
-    var bio: String?
-    var username: String?
-    var signUpDate: String?
-    var userNumber: Int?
-}
-
-struct PrivateUserAPIResponse: Codable {
-    var id: String?
-    var profileImageUrl: String?
-    var bio: String?
-    var username: String?
-    var signUpDate: String?
-    var userNumber: Int?
-    var email: String?
-}
-
-struct PrivateUser {
-    var id: String?
-    var profileImage: UIImage
-    var bio: String?
-    var username: String?
-    var signUpDate: String?
-    var userNumber: Int?
-    var email: String
+    var bio: String
+    var username: String
+    var signUpDate: String
+    var userNumber: Int
 }

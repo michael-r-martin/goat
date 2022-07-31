@@ -46,7 +46,7 @@ struct DownloadValidator {
     }
     
     mutating func validateCollection() throws -> [[String: Any]] {
-        var validData: [[String: Any]] = [[:]]
+        var validData: [[String: Any]] = []
         
         guard error == nil else {
             throw DownloadValidationError.apiError

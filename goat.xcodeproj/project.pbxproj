@@ -40,6 +40,7 @@
 		96B72ED32894182A003F7C87 /* CustomErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B72ED22894182A003F7C87 /* CustomErrors.swift */; };
 		96B72ED528956C31003F7C87 /* ImagePostDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B72ED428956C31003F7C87 /* ImagePostDownloader.swift */; };
 		96B72ED7289582F7003F7C87 /* CustomEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B72ED6289582F7003F7C87 /* CustomEnums.swift */; };
+		96B72ED928958AB2003F7C87 /* UserDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B72ED828958AB2003F7C87 /* UserDownloader.swift */; };
 		A379E566BB0F41224F533F3A /* Pods_goat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CA7EA020E76AC03BFC7188 /* Pods_goat.framework */; };
 		CE3DCCEE58A4B8A393A125A8 /* Pods_goat_goatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D42071CE28984D5FFBDA43 /* Pods_goat_goatUITests.framework */; };
 		E96EC1BAF65CA1679EADBE5E /* Pods_goatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587BB68A6D4DBF6B504B4B1A /* Pods_goatTests.framework */; };
@@ -107,6 +108,7 @@
 		96B72ED22894182A003F7C87 /* CustomErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrors.swift; sourceTree = "<group>"; };
 		96B72ED428956C31003F7C87 /* ImagePostDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostDownloader.swift; sourceTree = "<group>"; };
 		96B72ED6289582F7003F7C87 /* CustomEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEnums.swift; sourceTree = "<group>"; };
+		96B72ED828958AB2003F7C87 /* UserDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDownloader.swift; sourceTree = "<group>"; };
 		A188FF19091D3CA71DA6FC58 /* Pods-goat-goatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goat-goatUITests.debug.xcconfig"; path = "Target Support Files/Pods-goat-goatUITests/Pods-goat-goatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E026BE75BD7C37931E1A1846 /* Pods-goatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goatTests.release.xcconfig"; path = "Target Support Files/Pods-goatTests/Pods-goatTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +191,7 @@
 				96778FEE2893E2D900E78307 /* Info.plist */,
 				9677903F28940E4C00E78307 /* GoogleService-Info.plist */,
 				96778FE62893E2D700E78307 /* goat.xcdatamodeld */,
+				96B72ECE28941604003F7C87 /* ContentDownloader.swift */,
 			);
 			path = goat;
 			sourceTree = "<group>";
@@ -260,7 +263,7 @@
 				967790392893EF8900E78307 /* ObjectParser.swift */,
 				96B72ED0289416D1003F7C87 /* DownloadValidator.swift */,
 				96B72ED428956C31003F7C87 /* ImagePostDownloader.swift */,
-				96B72ECE28941604003F7C87 /* ContentDownloader.swift */,
+				96B72ED828958AB2003F7C87 /* UserDownloader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96B72ED928958AB2003F7C87 /* UserDownloader.swift in Sources */,
 				967790362893EE6800E78307 /* ContentModels.swift in Sources */,
 				967790312893EB7400E78307 /* MainFeedCollectionViewCell.swift in Sources */,
 				96778FE82893E2D700E78307 /* goat.xcdatamodeld in Sources */,
@@ -747,7 +751,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -776,7 +780,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

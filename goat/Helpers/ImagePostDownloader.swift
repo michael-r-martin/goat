@@ -17,7 +17,8 @@ class ImagePostDownloader {
     weak var delegate: ImagePostDownloadDelegate?
     
     var fetchedContentCollection: [ImagePostAPIResponse] = []
-    var nextFullPostIndexToFetch: Int = 0
+    var fullyFetchedIndices: Int = 0
+    var fullyLoadedCellIndices: [Int] = []
     
     func downloadContentCollection() {
         db.collection(ContentCollection.imagePosts.rawValue).getDocuments { snapshot, error in
@@ -35,7 +36,7 @@ class ImagePostDownloader {
             }
             
             for item in validDataArray {
-                
+                print("ran")
                 let objectToParse = AnyParsedObject<ImagePostAPIResponse>()
                 
                 guard let parsedData = try? objectToParse.parseObject(item) else {
@@ -50,7 +51,7 @@ class ImagePostDownloader {
     }
     
     func fetchFullPost() {
-        let postToFetch = fetchedContentCollection[nextFullPostIndexToFetch]
+        let postToFetch = fetchedContentCollection[fullyFetchedIndices]
         
         let userImageIdToFetch = postToFetch.userId
         
@@ -66,7 +67,7 @@ class ImagePostDownloader {
             return
         }
         
-        let userImageChildRef = storageRef.child("images/publicusers/\(userImageIdToFetch).jpg")
+        let userImageChildRef = storageRef.child("images/publicUsers/\(userImageIdToFetch).jpg")
         
         let contentImageChildRef = storageRef.child("images/imagePosts/\(contentImageIdToFetch).jpg")
         
@@ -75,8 +76,8 @@ class ImagePostDownloader {
         
         let imageDispatchGroup = DispatchGroup()
         
+        imageDispatchGroup.enter()
         userImageChildRef.getData(maxSize: 10*1024*1024) { imageData, error in
-            imageDispatchGroup.enter()
             defer { imageDispatchGroup.leave() }
             
             // refactor
@@ -97,8 +98,8 @@ class ImagePostDownloader {
             userImage = image
         }
         
+        imageDispatchGroup.enter()
         contentImageChildRef.getData(maxSize: 10*1024*1024) { imageData, error in
-            imageDispatchGroup.enter()
             defer { imageDispatchGroup.leave() }
             
             if let error = error {
@@ -118,8 +119,10 @@ class ImagePostDownloader {
             contentImage = image
         }
         
+        self.fullyLoadedCellIndices.append(fullyFetchedIndices)
+        
         imageDispatchGroup.notify(queue: .main) {
-            self.nextFullPostIndexToFetch += 1
+            self.fullyFetchedIndices += 1
             
             guard let fullPost = self.mapApiResponseIntoUsableObject(apiResponse: postToFetch, userImage: userImage, contentImage: contentImage) else {
                 return
@@ -180,4 +183,6 @@ protocol ImagePostDownloadDelegate: AnyObject {
     func didAttemptCollectionDownload(collection: [ImagePostAPIResponse], error: String?)
     
     func didAttemptFullPostDownload(fullPost: ImagePost, error: String?)
+    
+    var fullyLoadedCellIndices: [Int] { get }
 }

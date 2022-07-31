@@ -26,15 +26,22 @@ class MainFeedCollectionViewCell: UICollectionViewCell {
     
     func styleCell() {
         cellBackgroundView.applyCurvedCorners(0.05)
-        cellBackgroundView.applyCurvedCorners(0.04)
+        mainContentView.applyCurvedCorners(0.04)
         
-        userImageBackgroundView.applyCurvedCorners(0.8)
-        userImageView.applyCurvedCorners(0.8)
+        userImageBackgroundView.layer.borderWidth = 2
+        userImageBackgroundView.layer.borderColor = UIColor.systemGray5.cgColor
+        userImageBackgroundView.applyCurvedCorners(0.3)
+        userImageView.applyCurvedCorners(0.3)
         
-        contentImageView.applyCurvedCorners(0.8)
+        contentImageView.applyCurvedCorners(0.2)
         
-        messageButtonView.applyCurvedCorners(1)
-        reactButtonView.applyCurvedCorners(1)
+        messageButtonView.applyCurvedCorners(0.5)
+        messageButtonView.layer.borderWidth = 2
+        messageButtonView.layer.borderColor = UIColor.systemGray5.cgColor
+        
+        reactButtonView.applyCurvedCorners(0.5)
+        reactButtonView.layer.borderWidth = 2
+        reactButtonView.layer.borderColor = UIColor.systemGray5.cgColor
     }
     
 }
