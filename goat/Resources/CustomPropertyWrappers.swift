@@ -36,7 +36,7 @@ import UIKit
     }
 }
 
-@propertyWrapper struct NonOptionalString {
+@propertyWrapper struct AutoDefaultString {
     var wrappedValue: String?
     var defaultValue: String
     

@@ -32,7 +32,8 @@ class MainFeedViewController: UIViewController {
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
         
-        imagePostDownloader.downloadContentCollection()
+        let newsFeedOptions = ImagePostDownloadOptions(currentUserId: <#T##String?#>, postToFetchId: <#T##String?#>, postLimit: <#T##Int?#>, afterPostId: <#T##String?#>)
+        imagePostDownloader.downloadContentCollection(collectionType: ContentCollection.newsFeed("currentUserId"))
     }
     
     override func viewDidLayoutSubviews() {

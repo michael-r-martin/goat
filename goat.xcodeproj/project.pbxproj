@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		962433082897283A004A619B /* PostUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962433072897283A004A619B /* PostUploader.swift */; };
+		9624330A2897E04A004A619B /* OptionsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962433092897E04A004A619B /* OptionsModels.swift */; };
+		9624330C2897E826004A619B /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9624330B2897E826004A619B /* TypeAliases.swift */; };
 		96778FDE2893E2D700E78307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96778FDD2893E2D700E78307 /* AppDelegate.swift */; };
 		96778FE02893E2D700E78307 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96778FDF2893E2D700E78307 /* SceneDelegate.swift */; };
 		96778FE82893E2D700E78307 /* goat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96778FE62893E2D700E78307 /* goat.xcdatamodeld */; };
@@ -71,6 +74,9 @@
 		587BB68A6D4DBF6B504B4B1A /* Pods_goatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CDD9C15F6C1A3D5917A064 /* Pods-goat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goat.debug.xcconfig"; path = "Target Support Files/Pods-goat/Pods-goat.debug.xcconfig"; sourceTree = "<group>"; };
 		9402BA8C869F2105C61B0C49 /* Pods-goat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goat.release.xcconfig"; path = "Target Support Files/Pods-goat/Pods-goat.release.xcconfig"; sourceTree = "<group>"; };
+		962433072897283A004A619B /* PostUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUploader.swift; sourceTree = "<group>"; };
+		962433092897E04A004A619B /* OptionsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsModels.swift; sourceTree = "<group>"; };
+		9624330B2897E826004A619B /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		96778FDA2893E2D700E78307 /* goat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96778FDD2893E2D700E78307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96778FDF2893E2D700E78307 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -264,6 +270,7 @@
 				96B72ED0289416D1003F7C87 /* DownloadValidator.swift */,
 				96B72ED428956C31003F7C87 /* ImagePostDownloader.swift */,
 				96B72ED828958AB2003F7C87 /* UserDownloader.swift */,
+				962433072897283A004A619B /* PostUploader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -275,6 +282,7 @@
 				9677903D2894046800E78307 /* UIExtensions.swift */,
 				96B72ED22894182A003F7C87 /* CustomErrors.swift */,
 				96B72ED6289582F7003F7C87 /* CustomEnums.swift */,
+				9624330B2897E826004A619B /* TypeAliases.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -284,6 +292,7 @@
 			children = (
 				967790352893EE6800E78307 /* ContentModels.swift */,
 				9677903B2893F07A00E78307 /* UserModels.swift */,
+				962433092897E04A004A619B /* OptionsModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -554,9 +563,12 @@
 				96778FE82893E2D700E78307 /* goat.xcdatamodeld in Sources */,
 				967790382893EEF400E78307 /* CustomPropertyWrappers.swift in Sources */,
 				96B72ECF28941604003F7C87 /* ContentDownloader.swift in Sources */,
+				9624330A2897E04A004A619B /* OptionsModels.swift in Sources */,
 				96B72ED528956C31003F7C87 /* ImagePostDownloader.swift in Sources */,
+				9624330C2897E826004A619B /* TypeAliases.swift in Sources */,
 				96778FDE2893E2D700E78307 /* AppDelegate.swift in Sources */,
 				9677903E2894046800E78307 /* UIExtensions.swift in Sources */,
+				962433082897283A004A619B /* PostUploader.swift in Sources */,
 				96B72ED32894182A003F7C87 /* CustomErrors.swift in Sources */,
 				96778FE02893E2D700E78307 /* SceneDelegate.swift in Sources */,
 				9677903C2893F07A00E78307 /* UserModels.swift in Sources */,

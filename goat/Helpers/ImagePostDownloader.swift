@@ -19,11 +19,41 @@ class ImagePostDownloader {
     var fetchedContentCollection: [ImagePostAPIResponse] = []
     var fullyFetchedIndices: Int = 0
     var fullyLoadedCellIndices: [Int] = []
+    var lastFetchedDocument: DocumentSnapshot?
     
-    func downloadContentCollection() {
-        db.collection(ContentCollection.imagePosts.rawValue).getDocuments { snapshot, error in
+    func downloadContentCollection(userId: String?, options: ImagePostDownloadOptions) {
+        var collectionToFetch: Query?
+        
+        guard let userId = userId else {
+            return
+        }
+        
+        switch options.collectionType {
+        case .userImages:
+            collectionToFetch = db
+                .collection(FirebaseParameter.publicUsers)
+                .document(userId).collection(FirebaseParameter.usersPosts)
+                .limit(to: options.postLimit)
+                .order(by: FirebaseParameter.timestamp, descending: true)
+        case .newsFeed:
+            collectionToFetch = db
+                .collection(FirebaseParameter.publicUsers)
+                .document(userId)
+                .collection(FirebaseParameter.newsFeed)
+                .limit(to: options.postLimit)
+                .order(by: FirebaseParameter.timestamp, descending: true)
+        default: return
+        }
+        
+        if let nextToFetch = lastFetchedDocument {
+            collectionToFetch?.start(afterDocument: nextToFetch)
+        }
+        
+        collectionToFetch?.getDocuments { snapshot, error in
             
             var downloadValidator = DownloadValidator(snapshot: nil, snapshotDocuments: snapshot, error: error)
+            
+            self.lastFetchedDocument = snapshot?.documents.last
             
             var validDataArray: [Data] = []
             
@@ -36,7 +66,6 @@ class ImagePostDownloader {
             }
             
             for item in validDataArray {
-                print("ran")
                 let objectToParse = AnyParsedObject<ImagePostAPIResponse>()
                 
                 guard let parsedData = try? objectToParse.parseObject(item) else {
@@ -67,9 +96,9 @@ class ImagePostDownloader {
             return
         }
         
-        let userImageChildRef = storageRef.child("images/publicUsers/\(userImageIdToFetch).jpg")
+        let userImageChildRef = storageRef.child("\(FirebaseParameter.profileImagesStorageRef)\(userImageIdToFetch)\(MediaExtensions.jpg)")
         
-        let contentImageChildRef = storageRef.child("images/imagePosts/\(contentImageIdToFetch).jpg")
+        let contentImageChildRef = storageRef.child("\(FirebaseParameter.imagePostsStorageRef)\(contentImageIdToFetch)\(MediaExtensions.jpg)")
         
         var userImage = UIImage()
         var contentImage = UIImage()
@@ -134,7 +163,11 @@ class ImagePostDownloader {
     
     func mapApiResponseIntoUsableObject(apiResponse: ImagePostAPIResponse, userImage: UIImage, contentImage: UIImage) -> ImagePost? {
         
-        guard let postId = apiResponse.postId, let userId = apiResponse.userId, let contentDescription = apiResponse.contentDescription, let username = apiResponse.username, let timestamp = apiResponse.timestamp else {
+        guard let postId = apiResponse.postId,
+              let userId = apiResponse.userId,
+              let contentDescription = apiResponse.contentDescription,
+              let username = apiResponse.username,
+              let timestamp = apiResponse.timestamp else {
             return nil
         }
         
@@ -152,12 +185,22 @@ class ImagePostDownloader {
         return imagePost
     }
     
-    func downloadIndividualPost(_ id: String?) {
-        guard let id = id else {
+    func downloadIndividualPost(userId: String?, postId: String?) {
+        guard let userId = userId else {
             return
         }
         
-        db.collection(ContentCollection.imagePosts.rawValue).document(id).getDocument { snapshot, error in
+        guard let postId = postId else {
+            return
+        }
+        
+        let documentReference = db
+            .collection(FirebaseParameter.publicUsers)
+            .document(userId)
+            .collection(FirebaseParameter.usersPosts)
+            .document(postId)
+        
+        documentReference.getDocument { snapshot, error in
             var downloadValidator = DownloadValidator(snapshot: snapshot, snapshotDocuments: nil, error: error)
             
             var parseableData = Data()

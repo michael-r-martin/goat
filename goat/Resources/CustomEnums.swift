@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
-enum ContentCollection: String {
-    case publicUserProfile = "publicUsers"
-    case imagePosts = "imagePosts"
-    case privateUserProfile = "privateUsers"
+enum ContentCollection {
+    case publicUserProfile(String?)
+    case privateUserProfile(String?)
+    case userImages(String?)
+    case newsFeed(String?)
 }
 
 enum DownloadStatus {
@@ -18,4 +20,9 @@ enum DownloadStatus {
     case rawCollectionFetched
     case imageFetched
     case allImagesFetched
+}
+
+enum MediaExtensions: String {
+    case jpg = ".jpg"
+    case mov = ".mov"
 }
