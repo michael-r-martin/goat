@@ -17,7 +17,7 @@ class UserDownloader {
     weak var delegate: UserDownloadDelegate?
     
     func downloadUserCollection() {
-        db.collection(ContentCollection.publicUserProfile.rawValue).getDocuments { snapshot, error in
+        db.collection(FirebaseParameter.publicUsers).getDocuments { snapshot, error in
             
             var parsedUsers: [UserAPIResponse] = []
             var fullUserCollection: [User] = []
@@ -68,7 +68,7 @@ class UserDownloader {
             return
         }
         
-        let imageChildRef = storageRef.child("images/publicusers/\(userId).jpg")
+        let imageChildRef = storageRef.child("\(FirebaseParameter.publicUsers)\(userId)\(MediaExtensions.jpg)")
         
         imageChildRef.getData(maxSize: 10*1024*1024) { imageData, error in
             
@@ -115,7 +115,7 @@ class UserDownloader {
             return
         }
         
-        db.collection(userType.rawValue).document(userId).getDocument { snapshot, error in
+        db.collection(FirebaseParameter.privateUsers).document(userId).getDocument { snapshot, error in
             var downloadValidator = DownloadValidator(snapshot: snapshot, snapshotDocuments: nil, error: error)
             
             var parseableData = Data()
@@ -151,4 +151,21 @@ protocol UserDownloadDelegate: AnyObject {
     func didAttemptRawUserDownload(rawUser: UserAPIResponse, error: String?)
     
     func didAttemptFullUserDownload(fullUser: User, error: String?)
+}
+extension UserDownloadDelegate {
+    func didAttemptRawCollectionDownload(collection: [UserAPIResponse], error: String?) {
+        print("default implementation")
+    }
+    
+    func didAttemptFullCollectionDownload(collection: [User], error: String?) {
+        print("default implementation")
+    }
+    
+    func didAttemptRawUserDownload(rawUser: UserAPIResponse, error: String?) {
+        print("default implementation")
+    }
+    
+    func didAttemptFullUserDownload(fullUser: User, error: String?) {
+        print("default implementation")
+    }
 }

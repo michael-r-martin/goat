@@ -16,15 +16,19 @@ class PostUploader {
     
     var userId: String
     
-    init(userId: String?) {
+    init?(userId: String?) {
         guard let userId = userId else {
-            return
+            return nil
         }
 
         self.userId = userId
     }
     
-    func uploadPost(post: ImagePost, postLocation: ContentCollection) {
+    func uploadPost(post: ImagePost?) {
+        guard let post = post else {
+            return
+        }
+        
         uploadImageToStorage(fromPost: post)
         
         writePostToUsersPosts(post)

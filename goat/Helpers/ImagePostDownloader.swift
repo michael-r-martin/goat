@@ -17,7 +17,7 @@ class ImagePostDownloader {
     weak var delegate: ImagePostDownloadDelegate?
     
     var fetchedContentCollection: [ImagePostAPIResponse] = []
-    var fullyFetchedIndices: Int = 0
+    var lastFetchedIndex: Int = 0
     var fullyLoadedCellIndices: [Int] = []
     var lastFetchedDocument: DocumentSnapshot?
     
@@ -32,7 +32,8 @@ class ImagePostDownloader {
         case .userImages:
             collectionToFetch = db
                 .collection(FirebaseParameter.publicUsers)
-                .document(userId).collection(FirebaseParameter.usersPosts)
+                .document(userId)
+                .collection(FirebaseParameter.usersPosts)
                 .limit(to: options.postLimit)
                 .order(by: FirebaseParameter.timestamp, descending: true)
         case .newsFeed:
@@ -80,7 +81,11 @@ class ImagePostDownloader {
     }
     
     func fetchFullPost() {
-        let postToFetch = fetchedContentCollection[fullyFetchedIndices]
+        var postToFetch = ImagePostAPIResponse()
+        
+        if fetchedContentCollection.count > lastFetchedIndex {
+            postToFetch = fetchedContentCollection[lastFetchedIndex]
+        }
         
         let userImageIdToFetch = postToFetch.userId
         
@@ -148,10 +153,10 @@ class ImagePostDownloader {
             contentImage = image
         }
         
-        self.fullyLoadedCellIndices.append(fullyFetchedIndices)
-        
         imageDispatchGroup.notify(queue: .main) {
-            self.fullyFetchedIndices += 1
+            self.fullyLoadedCellIndices.append(self.lastFetchedIndex)
+            
+            self.lastFetchedIndex += 1
             
             guard let fullPost = self.mapApiResponseIntoUsableObject(apiResponse: postToFetch, userImage: userImage, contentImage: contentImage) else {
                 return
@@ -227,5 +232,5 @@ protocol ImagePostDownloadDelegate: AnyObject {
     
     func didAttemptFullPostDownload(fullPost: ImagePost, error: String?)
     
-    var fullyLoadedCellIndices: [Int] { get }
+    var fullyLoadedCellIndices: [Int]? { get }
 }

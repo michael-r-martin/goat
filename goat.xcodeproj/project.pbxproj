@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96025E532899A73D008401A3 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96025E522899A73D008401A3 /* CreatePostViewController.swift */; };
+		96025E552899A752008401A3 /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96025E542899A752008401A3 /* Create.storyboard */; };
+		96025E572899A778008401A3 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96025E562899A778008401A3 /* FriendsListViewController.swift */; };
+		96025E592899A78B008401A3 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96025E582899A78B008401A3 /* Friends.storyboard */; };
+		96025E5B2899BE42008401A3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96025E5A2899BE42008401A3 /* Coordinator.swift */; };
 		962433082897283A004A619B /* PostUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962433072897283A004A619B /* PostUploader.swift */; };
 		9624330A2897E04A004A619B /* OptionsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962433092897E04A004A619B /* OptionsModels.swift */; };
 		9624330C2897E826004A619B /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9624330B2897E826004A619B /* TypeAliases.swift */; };
@@ -44,6 +49,8 @@
 		96B72ED528956C31003F7C87 /* ImagePostDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B72ED428956C31003F7C87 /* ImagePostDownloader.swift */; };
 		96B72ED7289582F7003F7C87 /* CustomEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B72ED6289582F7003F7C87 /* CustomEnums.swift */; };
 		96B72ED928958AB2003F7C87 /* UserDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B72ED828958AB2003F7C87 /* UserDownloader.swift */; };
+		96EA6E63289A722500BA020C /* MediaLibraryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA6E62289A722500BA020C /* MediaLibraryFetcher.swift */; };
+		96EA6E65289A792400BA020C /* PhotoLibraryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA6E64289A792400BA020C /* PhotoLibraryCollectionViewCell.swift */; };
 		A379E566BB0F41224F533F3A /* Pods_goat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CA7EA020E76AC03BFC7188 /* Pods_goat.framework */; };
 		CE3DCCEE58A4B8A393A125A8 /* Pods_goat_goatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D42071CE28984D5FFBDA43 /* Pods_goat_goatUITests.framework */; };
 		E96EC1BAF65CA1679EADBE5E /* Pods_goatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587BB68A6D4DBF6B504B4B1A /* Pods_goatTests.framework */; };
@@ -74,6 +81,11 @@
 		587BB68A6D4DBF6B504B4B1A /* Pods_goatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CDD9C15F6C1A3D5917A064 /* Pods-goat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goat.debug.xcconfig"; path = "Target Support Files/Pods-goat/Pods-goat.debug.xcconfig"; sourceTree = "<group>"; };
 		9402BA8C869F2105C61B0C49 /* Pods-goat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goat.release.xcconfig"; path = "Target Support Files/Pods-goat/Pods-goat.release.xcconfig"; sourceTree = "<group>"; };
+		96025E522899A73D008401A3 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		96025E542899A752008401A3 /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
+		96025E562899A778008401A3 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		96025E582899A78B008401A3 /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
+		96025E5A2899BE42008401A3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		962433072897283A004A619B /* PostUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUploader.swift; sourceTree = "<group>"; };
 		962433092897E04A004A619B /* OptionsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsModels.swift; sourceTree = "<group>"; };
 		9624330B2897E826004A619B /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
@@ -115,6 +127,8 @@
 		96B72ED428956C31003F7C87 /* ImagePostDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostDownloader.swift; sourceTree = "<group>"; };
 		96B72ED6289582F7003F7C87 /* CustomEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEnums.swift; sourceTree = "<group>"; };
 		96B72ED828958AB2003F7C87 /* UserDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDownloader.swift; sourceTree = "<group>"; };
+		96EA6E62289A722500BA020C /* MediaLibraryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryFetcher.swift; sourceTree = "<group>"; };
+		96EA6E64289A792400BA020C /* PhotoLibraryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryCollectionViewCell.swift; sourceTree = "<group>"; };
 		A188FF19091D3CA71DA6FC58 /* Pods-goat-goatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goat-goatUITests.debug.xcconfig"; path = "Target Support Files/Pods-goat-goatUITests/Pods-goat-goatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E026BE75BD7C37931E1A1846 /* Pods-goatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goatTests.release.xcconfig"; path = "Target Support Files/Pods-goatTests/Pods-goatTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +174,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		96025E502899A705008401A3 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				96025E522899A73D008401A3 /* CreatePostViewController.swift */,
+				96025E542899A752008401A3 /* Create.storyboard */,
+				96EA6E64289A792400BA020C /* PhotoLibraryCollectionViewCell.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		96025E512899A70E008401A3 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				96025E562899A778008401A3 /* FriendsListViewController.swift */,
+				96025E582899A78B008401A3 /* Friends.storyboard */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
 		96778FD12893E2D700E78307 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +218,8 @@
 		96778FDC2893E2D700E78307 /* goat */ = {
 			isa = PBXGroup;
 			children = (
+				96025E512899A70E008401A3 /* Friends */,
+				96025E502899A705008401A3 /* Create */,
 				967790342893EE4F00E78307 /* Models */,
 				967790332893EE3300E78307 /* Resources */,
 				967790322893EE2800E78307 /* Helpers */,
@@ -271,6 +306,8 @@
 				96B72ED428956C31003F7C87 /* ImagePostDownloader.swift */,
 				96B72ED828958AB2003F7C87 /* UserDownloader.swift */,
 				962433072897283A004A619B /* PostUploader.swift */,
+				96025E5A2899BE42008401A3 /* Coordinator.swift */,
+				96EA6E62289A722500BA020C /* MediaLibraryFetcher.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -420,12 +457,14 @@
 				967790272893E40C00E78307 /* Main.storyboard in Resources */,
 				967790292893E42D00E78307 /* Profiles.storyboard in Resources */,
 				9677901B2893E3AA00E78307 /* Poppins-ExtraLight.ttf in Resources */,
+				96025E592899A78B008401A3 /* Friends.storyboard in Resources */,
 				9677901C2893E3AA00E78307 /* Poppins-ExtraBold.ttf in Resources */,
 				967790202893E3AA00E78307 /* Poppins-Thin.ttf in Resources */,
 				96778FED2893E2D900E78307 /* LaunchScreen.storyboard in Resources */,
 				9677901D2893E3AA00E78307 /* Poppins-SemiBold.ttf in Resources */,
 				96778FEA2893E2D900E78307 /* Assets.xcassets in Resources */,
 				967790212893E3AA00E78307 /* Poppins-Bold.ttf in Resources */,
+				96025E552899A752008401A3 /* Create.storyboard in Resources */,
 				967790222893E3AA00E78307 /* Poppins-Black.ttf in Resources */,
 				967790232893E3AA00E78307 /* Poppins-Medium.ttf in Resources */,
 				9677901F2893E3AA00E78307 /* Poppins-Regular.ttf in Resources */,
@@ -558,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96B72ED928958AB2003F7C87 /* UserDownloader.swift in Sources */,
+				96025E532899A73D008401A3 /* CreatePostViewController.swift in Sources */,
 				967790362893EE6800E78307 /* ContentModels.swift in Sources */,
 				967790312893EB7400E78307 /* MainFeedCollectionViewCell.swift in Sources */,
 				96778FE82893E2D700E78307 /* goat.xcdatamodeld in Sources */,
@@ -566,12 +606,16 @@
 				9624330A2897E04A004A619B /* OptionsModels.swift in Sources */,
 				96B72ED528956C31003F7C87 /* ImagePostDownloader.swift in Sources */,
 				9624330C2897E826004A619B /* TypeAliases.swift in Sources */,
+				96EA6E65289A792400BA020C /* PhotoLibraryCollectionViewCell.swift in Sources */,
 				96778FDE2893E2D700E78307 /* AppDelegate.swift in Sources */,
 				9677903E2894046800E78307 /* UIExtensions.swift in Sources */,
 				962433082897283A004A619B /* PostUploader.swift in Sources */,
 				96B72ED32894182A003F7C87 /* CustomErrors.swift in Sources */,
+				96025E572899A778008401A3 /* FriendsListViewController.swift in Sources */,
 				96778FE02893E2D700E78307 /* SceneDelegate.swift in Sources */,
 				9677903C2893F07A00E78307 /* UserModels.swift in Sources */,
+				96025E5B2899BE42008401A3 /* Coordinator.swift in Sources */,
+				96EA6E63289A722500BA020C /* MediaLibraryFetcher.swift in Sources */,
 				9677902D2893E47B00E78307 /* ViewProfileViewController.swift in Sources */,
 				9677903A2893EF8900E78307 /* ObjectParser.swift in Sources */,
 				96B72ED1289416D1003F7C87 /* DownloadValidator.swift in Sources */,

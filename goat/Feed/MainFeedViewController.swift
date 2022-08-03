@@ -10,8 +10,15 @@ import UIKit
 class MainFeedViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var feedCollectionView: UICollectionView!
+    @IBOutlet weak var newPostButtonView: UIView!
+    @IBOutlet weak var newPostButtonImage: UIImageView!
+    @IBOutlet weak var newPostButton: UIButton!
+
+    @IBOutlet weak var friendsButtonView: UIView!
+    @IBOutlet weak var friendsButtonImage: UIImageView!
+    @IBOutlet weak var friendsButton: UIButton!
     
+    @IBOutlet weak var feedCollectionView: UICollectionView!
     // MARK: - Classes
     let imagePostDownloader = ImagePostDownloader()
     
@@ -32,15 +39,28 @@ class MainFeedViewController: UIViewController {
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
         
-        let newsFeedOptions = ImagePostDownloadOptions(currentUserId: <#T##String?#>, postToFetchId: <#T##String?#>, postLimit: <#T##Int?#>, afterPostId: <#T##String?#>)
-        imagePostDownloader.downloadContentCollection(collectionType: ContentCollection.newsFeed("currentUserId"))
+        let newsFeedOptions = ImagePostDownloadOptions(postLimit: 10, collectionType: .newsFeed(nil))
+        imagePostDownloader.downloadContentCollection(userId: "mikey", options: newsFeedOptions)
     }
     
     override func viewDidLayoutSubviews() {
-        
+        styleView()
     }
     
+    // MARK: - IBActions
+    @IBAction func newPostButtonTapped(_ sender: Any) {
+        goToCreatePost()
+    }
+    
+    
     // MARK: - UI Methods
+    func styleView() {
+        newPostButtonView.applyCurvedCorners(0.36)
+        
+        friendsButtonView.applyCurvedCorners(0.36)
+        friendsButtonView.layer.borderColor = UIColor.systemGray5.cgColor
+        friendsButtonView.layer.borderWidth = 2
+    }
 
 }
 
@@ -66,7 +86,7 @@ extension MainFeedViewController: UICollectionViewDelegate, UICollectionViewData
             return dequeueLoadingPlaceholderCell(indexPath: indexPath)
         }
         
-        if fullyLoadedCellIndices.contains(row) {
+        if fullyLoadedCellIndices?.contains(row) == true {
             return dequeueCellWithImage(indexPath: indexPath)
         } else {
             return dequeueCellWithoutImage(indexPath: indexPath)
@@ -181,7 +201,7 @@ extension MainFeedViewController: ImagePostDownloadDelegate {
         self.feedCollectionView.reloadData()
     }
     
-    var fullyLoadedCellIndices: [Int] {
+    var fullyLoadedCellIndices: [Int]? {
         return imagePostDownloader.fullyLoadedCellIndices
     }
 }
